@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>KISHORE — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@600;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #101214;
+      --bg-image: url('assets/Time-To-Change.jpg');
+      --surface-bg: #18191b;
+      --accent: #2a2a2a;
+      --text-main: #f6f6f6;
+      --text-secondary: #7d7d7d;
+      --card-bg: #232426;
+      --card-shadow: rgba(0,0,0,0.19);
+      --border-radius: 16px;
+      --font-bold: 'Oswald', 'Montserrat', Arial, sans-serif;
+      --font-main: 'Montserrat', Arial, sans-serif;
+    }
+    body {
+      font-family: var(--font-main);
+      background: var(--main-bg) var(--bg-image) no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-main);
+      margin: 0;
+      min-height: 100vh;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(16,18,20,0.99);
+      z-index: 99;
+      box-shadow: 0 2px 18px var(--card-shadow);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-content {
+      width: 100%;
+      max-width: 1200px;
+      min-height: 72px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8em 1em;
+    }
+    .logo {
+      font-family: var(--font-bold);
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      color: var(--text-main);
+      text-shadow: 0 4px 24px #00000080;
+      text-transform: uppercase;
+      margin: 0 auto 0.1em auto;
+      text-align: center;
+    }
+    nav {
+      margin-top: 0.5em;
+      display: flex;
+      gap: 2.5em;
+      justify-content: center;
+    }
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-family: var(--font-bold);
+      font-weight: 900;
+      font-size: 1em;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 0.3em;
+      transition: color 0.15s;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      height: 1.5px;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.18s;
+      position: absolute;
+      bottom: 0; left: 0;
+    }
+    nav a:hover, nav a:focus {
+      color: #aaa;
+    }
+    nav a:hover::after, nav a:focus::after {
+      width: 60%;
+    }
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(18, 18, 20, 0.74);
+      text-align: center;
+      padding: 7em 1em 4em 1em;
+    }
+    .hero h1 {
+      font-family: var(--font-bold);
+      text-transform: uppercase;
+      font-size: 4.2rem;
+      font-weight: 900;
+      margin: 0 0 1em 0;
+      letter-spacing: 0.08em;
+      color: #f6f6f6;
+      text-shadow: 0 6px 20px #000;
+      min-height: 3.5rem;
+      transition: all 0.3s cubic-bezier(.22,.68,.69,1.33);
+    }
+    .hero p {
+      font-family: var(--font-main);
+      color: var(--text-secondary);
+      font-size: 1.23em;
+      margin-bottom: 2.8em;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .cta-btn {
+      font-family: var(--font-bold);
+      font-size: 1.22em;
+      background: transparent;
+      color: var(--text-main);
+      border: 2.7px solid #353535;
+      border-radius: 32px;
+      padding: 1em 2.2em;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 2px 12px #0008;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.13s, color 0.14s, border 0.14s, transform 0.11s;
+    }
+    .cta-btn:active::after {
+      animation: ripple 0.4s cubic-bezier(.22,.68,.67,1.11);
+    }
+    .cta-btn::after {
+      content: "";
+      display: block;
+      position: absolute;
+      border-radius: 50%;
+      left: 50%; top: 50%;
+      width: 0; height: 0;
+      background: rgba(255,255,255,0.14);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    @keyframes ripple {
+      0% { width: 0; height: 0; opacity: 1;}
+      100% { width: 250px; height: 250px; opacity: 0; }
+    }
+    .cta-btn:hover, .cta-btn:focus {
+      color: #101214;
+      background: #fff;
+      border: 2.7px solid #fff;
+      transform: scale(1.045);
+    }
+    .social-handles {
+      margin-top: 2.1em;
+      font-size: 1.1em;
+      color: #b8b8b8;
+      text-align: center;
+      display: flex;
+      gap: 2.3em;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .social-handles a {
+      color: #ededed;
+      text-decoration: none;
+      font-family: var(--font-bold);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: color 0.14s;
+    }
+    .social-handles a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    #about {
+      max-width: 800px;
+      background: var(--surface-bg);
+      margin: -2.5em auto 3.7em auto;
+      border-radius: var(--border-radius);
+      padding: 3em 2.1em;
+      box-shadow: 0 2px 20px var(--card-shadow);
+    }
+    #about h2 {
+      font-family: var(--font-bold);
+      font-size: 2.1em;
+      font-weight: 900;
+      margin-bottom: 0.7em;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      text-align: center;
+    }
+    #about p {
+      font-size: 1.21em;
+      color: #ededed;
+      margin: 0;
+      letter-spacing: 0.01em;
+      text-align: center;
+    }
+    #cgshowcase {
+      max-width: 900px;
+      margin: 4em auto;
+      background: var(--surface-bg);
+      border-radius: var(--border-radius);
+      padding: 2.5em 1.5em;
+      box-shadow: 0 2px 18px var(--card-shadow);
+      text-align: center;
+    }
+    #cgshowcase h2 {
+      font-family: var(--font-bold);
+      font-size: 2em;
+      margin-bottom: 1.2em;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .before-after-container {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #232426;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 28px var(--card-shadow);
+      user-select: none;
+    }
+    .before-img, .after-img {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .after-img {
+      clip-path: inset(0 0 0 50%);
+      transition: clip-path 0.23s cubic-bezier(.22,.68,.69,1.33);
+    }
+    .handle {
+      position: absolute;
+      top: 0; left: 50%;
+      width: 5px;
+      height: 100%;
+      background: #7d7d7d;
+      cursor: ew-resize;
+      z-index: 5;
+      transition: background 0.13s;
+      border-radius: 6px;
+      box-shadow: 0 0 6px #000b;
+    }
+    .handle:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: -7px; top: 48%;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #edededdd;
+      border: 2px solid #7d7d7d;
+      box-shadow: 0 1px 8px #0004;
+    }
+    .before-after-label {
+      position: absolute; top: 10px; color: #edededdd; font-family: var(--font-bold); background: #16161890; padding: 0.3em 1em; border-radius: 6px; font-size: 1em;
+    }
+    .before-label { left: 16px; }
+    .after-label { right: 16px; }
+    #portfolio {
+      max-width: 1200px;
+      margin: 3em auto 3em auto;
+      padding: 1.75em 0;
+    }
+    #portfolio h2 {
+      font-family: var(--font-bold);
+      color: var(--text-main);
+      font-size: 2em;
+      font-weight: 900;
+      margin-bottom: 2em;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .grid {
+      display: grid;
+      gap: 2em;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+    .portfolio-item {
+      box-shadow: 0 8px 36px #000a;
+      aspect-ratio: 9/16;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.13s, box-shadow 0.18s;
+      opacity: 0;
+      transform: translateY(40px);
+      cursor: pointer;
+    }
+    .portfolio-item.visible {
+      aspect-ratio: 9/16;
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.7s cubic-bezier(.12,.39,.47,1.21);
+    }
+    .portfolio-item.expanded {
+      z-index: 10;
+      transform: scale(1.035) translateY(-12px)!important;
+      box-shadow: 0 32px 128px #000b;
+    }
+    .portfolio-thumb {
+      width: 100%;
+      aspect-ratio: 9/16;
+      background: #1b1c1e;
+      object-fit: cover;
+      display: block;
+      border-bottom: 2px solid #191b1d;
+      transition: filter 0.2s;
+    }
+    .portfolio-item.expanded .portfolio-thumb {
+      filter: brightness(1.3) saturate(1.1);
+    }
+    .portfolio-desc {
+      padding: 1.3em 1.35em 1.5em 1.35em;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      transition: background 0.2s;
+    }
+    .portfolio-item.expanded .portfolio-desc {
+      background: #151517;
+    }
+    .portfolio-desc h3 {
+      font-family: var(--font-bold);
+      color: #fff;
+      font-size: 1.18em;
+      font-weight: 900;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .portfolio-desc p {
+      color: var(--text-secondary);
+      margin: 0 0 0.6em 0;
+      font-size: 1.04em;
+    }
+    #contact {
+      max-width: 580px;
+      background: var(--surface-bg);
+      margin: 4em auto 3em auto;
+      border-radius: var(--border-radius);
+      padding: 2em 2em 2em 2em;
+      box-shadow: 0 2px 20px var(--card-shadow);
+      text-align: center;
+    }
+    #contact h2 {
+      font-family: var(--font-bold);
+      color: var(--text-main);
+      font-size: 2em;
+      font-weight: 900;
+      margin-bottom: 1.5em;
+      text-transform: uppercase;
+    }
+    .contact-links {
+      font-size: 1.05em;
+      color: #ededed;
+      text-align: center;
+    }
+    .contact-links a {
+      color: #ededed;
+      text-decoration: none;
+      font-weight: 700;
+      font-family: var(--font-bold);
+      letter-spacing: 0.01em;
+      transition: color 0.14s;
+    }
+    .contact-links a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    footer {
+      width: 100%;
+      background: #161618;
+      color: #74787a;
+      text-align: center;
+      font-size: 1em;
+      padding: 2em 0 1em 0;
+      margin-top: 3em;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 780px) {
+      .hero h1 { font-size: 2.1rem; }
+      .nav-content { padding: 1.1em !important; }
+      .logo { font-size: 1.47rem; }
+      .grid { grid-template-columns: 1fr; }
+      #about,#portfolio,#contact,#cgshowcase { border-radius: 0; margin: 0; }
+      .cta-btn { font-size: 1em; }
+      .before-after-container { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-content">
+      <div class="logo">KISHORE</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#cgshowcase">CG Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <h1 id="headline">BOLD VISUAL STORIES.</h1>
+    <p>Videographer · Video Editor · Photographer</p>
+    <button class="cta-btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})">See Portfolio</button>
+    <div class="social-handles">
+      <a href="https://instagram.com/kix_ore" target="_blank">Instagram</a>
+      <a href="https://ph.pinterest.com/kixoreee/" target="_blank">Pinterest</a>
+    </div>
+  </section>
+  <section id="about">
+    <h2>About Kishore</h2>
+    <p>
+      Hi! I'm <b>KISHORE</b>, a video editor and photographer focused on professional, impactful, and visually striking work. My process weaves creative clarity with technical precision, delivering bold results for brands and individuals. Let’s collaborate on your vision.
+    </p>
+  </section>
+
+  <!-- CG Before/After Interactive Showcase -->
+  <section id="cgshowcase">
+    <h2>CG VFX: Before / After</h2>
+    <div class="before-after-container" id="beforeAfter">
+      <!-- Replace src= attributes with your actual before/after images -->
+      <img src="C:\Users\harini k\Downloads\IMG_2331.jpg" class="before-img" draggable="false" alt="Before CG" />
+      <img src="C:\Users\harini k\Downloads\IMG_8432.jpg" class="after-img" draggable="false" alt="After CG" />
+      <div class="handle" id="sliderHandle"></div>
+      <span class="before-after-label before-label">Before</span>
+      <span class="before-after-label after-label">After</span>
+    </div>
+    <p style="margin-top:1.2em;color:#ababab">Drag slider to see the transformation!</p>
+  </section>
+
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="grid">
+      <!-- Portfolio Item 1 -->
+      <div class="portfolio-item">
+        <video class="portfolio-thumb" controls poster="C:\Users\harini k\Downloads\IMG_2904.jpg">
+          <source src="C:\Users\harini k\Downloads\RENDER.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="portfolio-desc">
+          <h3>Cinematic Reel</h3>
+          <p>Clean edits speaks for itself, both edgy and cool.</p>
+        </div>
+      </div>
+      <!-- Add more portfolio items as desired -->
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-links">
+      <p>Email: <a href="mailto:vkishore11082004@gmail.com">vkishore11082004@gmail.com</a></p>
+      <p>Instagram: <a href="https://instagram.com/kix_ore" target="_blank">@kix_ore</a></p>
+      <p>Pinterest: <a href="https://ph.pinterest.com/kixoreee/" target="_blank">kixoreee</a></p>
+    </div>
+  </section>
+  <footer>
+    &copy; 2025 KISHORE — Website credits to HariniKishore.
+  </footer>
+  <script>
+    // Animated rotating headline
+    const words = [
+      "BOLD VISUAL STORIES.",
+      "EDGY CINEMATIC MOODS.",
+      "STRIKING VISUAL ART."
+    ];
+    let i = 0;
+    setInterval(() => {
+      document.getElementById('headline').innerText = words[i];
+      i = (i + 1) % words.length;
+    }, 2500);
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if(href.startsWith("#")) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior: 'smooth'});
+        }
+      });
+    });
+
+    // Dynamic fade-in for portfolio cards & expand on click
+    const cards = document.querySelectorAll('.portfolio-item');
+    const observer = new window.IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.17 });
+    cards.forEach(card => {
+      observer.observe(card);
+      card.addEventListener('click', () => {
+        card.classList.toggle('expanded');
+        setTimeout(() => card.classList.remove('expanded'), 1550);
+      });
+    });
+
+    // CTA button ripple
+    document.querySelectorAll('.cta-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        let ripple = this.querySelector("::after");
+        this.classList.remove("ripple-animate");
+        void this.offsetWidth; // reflow for restart
+        this.classList.add("ripple-animate");
+      });
+    });
+
+    // Before/After slider feature
+    const ba = document.getElementById('beforeAfter'),
+          handle = document.getElementById('sliderHandle'),
+          after = ba.querySelector('.after-img');
+    let dragging = false;
+    ba.addEventListener('mousedown', e => { dragging = true; document.body.style.userSelect = 'none'; });
+    ba.addEventListener('touchstart', e => { dragging = true; });
+    document.addEventListener('mouseup', e => { dragging = false; document.body.style.userSelect = ''; });
+    document.addEventListener('touchend', e => { dragging = false; });
+    ba.addEventListener('mousemove', moveHandle);
+    ba.addEventListener('touchmove', moveHandle, {passive: false});
+    function moveHandle(e) {
+      if (!dragging) return;
+      let rect = ba.getBoundingClientRect();
+      let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      x = Math.max(0, Math.min(x, rect.width));
+      let pct = x / rect.width * 100;
+      handle.style.left = pct + '%';
+      after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+    }
+    // Set initial slider handle once DOM is ready
+    window.addEventListener('DOMContentLoaded', ()=>{
+      handle.style.left = '50%';
+      after.style.clipPath = 'inset(0 0 0 50%)';
+    });
+  </script>
+</body>
+</html>
